@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.graph.graph.mapper.UserMapper">
+    <insert id="insert" parameterType="com.graph.graph.entiey.User">
+        insert into `user` (id, name, no, log_date, password, latest_date)
+        values (#{id},#{name},#{no},#{logDate},#{password},#{latestDate})
+    </insert>
+    <update id="updata" parameterType="com.graph.graph.entiey.User">
+        UPDATE `user`
+        SET `name` = #{name}, `no` = #{no}, `log_date` = #{logDate}, `password` = #{password}, `latest_date` = #{latestDate} WHERE `id` = #{id};
+    </update>
+    <delete id="deleteByid" parameterType="com.graph.graph.entiey.User">
+        DELETE FROM `user`
+        WHERE id = #{id};
+    </delete>
+
+    <select id="selectAll" resultType="com.graph.graph.entiey.User">
+        select * from user
+    </select>
+    <select id="selectById" resultType="com.graph.graph.entiey.User">
+        select * from user
+        where id = #{id}
+    </select>
+    <select id="selectByName" resultType="com.graph.graph.entiey.User">
+        SELECT * FROM user
+        WHERE name LIKE CONCAT('%', #{name}, '%')
+    </select>
+
+</mapper>
